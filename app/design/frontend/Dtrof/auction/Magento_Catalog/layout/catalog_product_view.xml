@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <move element="product.info.media" destination="content" before="-"/>
+    <move element="product.info.social" destination="product.info.media" before="-"/>
+
+
+
+    <!-- main information on slider -->
+    <move element="page.main.title" destination="product.maininfo.title" />
+    <move element="product.info.stock.sku" destination="product.maininfo.title"/>
+    <referenceBlock name="product.info.review" remove="true" />
+    <move element="product.price.final" destination="product.maininfo.price"/>
+
+    <!-- description in left side -->
+    <move element="auction.product.attributes" destination="product.main.description" before="-"/>
+    <move element="product.info.overview" destination="product.main.description" after="auction.product.attributes"/>
+    <move element="product.info" destination="product.main.description" />
+    <move element="product.info.details" destination="product.main.description" after="-" />
+
+    <referenceContainer name="product.info.main">
+        <container name="product.main.description" htmlTag="div" htmlClass="product-info-main-description" before="-" />
+    </referenceContainer>
+
+    <referenceContainer name="product.info.media">
+        <container name="product.maininfo" htmlTag="div" htmlClass="product-maininfo">
+            <container name="product.maininfo.title" htmlTag="div" htmlClass="product-maininfo-title">
+                <block class="Magento\Framework\View\Element\Text" name="show-all-img">
+                    <arguments>
+                        <argument translate="true" name="text" xsi:type="string"><![CDATA[<a href="#" class="show-all-img">все фотографии</a>]]></argument>
+                    </arguments>
+                </block>
+            </container>
+            <container name="product.maininfo.price" htmlTag="div" htmlClass="product-maininfo-price">
+                <block class="Magento\Framework\View\Element\Text" name="product-maininfo-price-title" before="-">
+                    <arguments>
+                        <argument translate="true" name="text" xsi:type="string">Текущая цена</argument>
+                    </arguments>
+                </block>
+            </container>
+        </container>
+    </referenceContainer>
+
+
+</page>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Pdfinvoiceplus
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magestore_Auction::css/countdown/timeTo.css"/>
+        <css src="Magestore_Auction::css/countdown/timebox.css"/>
+        <css src="Magestore_Auction::css/auctionbox.css"/>
+    </head>
+    <body>
+        <attribute name="class" value="auction-product"/>
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View" name="auction.product.attributes" template="Magestore_Auction::attributes.phtml" before="-"/>
+            <block class="Magento\Catalog\Block\Product\View" name="auction.block" as="auction.block" cacheable="false" template="Magestore_Auction::auction.phtml">
+                <arguments>
+                    <argument name="blocked_groups_id" xsi:type="string">0</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magestore\Auction\Block\Product\View\Description" name="product.info.details" template="Magestore_Auction::product/view/details.phtml" after="product.info.media">
+                <arguments>
+                    <argument name="blocked_groups_id" xsi:type="string">0</argument>
+                </arguments>
+                <block class="Magestore\Auction\Block\Product\View\Description" name="product.info.description" template="Magestore_Auction::product/view/attribute.phtml" group="detailed_info">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getGc_generalinformation</argument>
+                        <argument name="at_code" xsi:type="string">gc_generalinformation</argument>
+                        <argument name="css_class" xsi:type="string">description</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">General Information</argument>
+                    </arguments>
+                </block>
+
+                <block class="Magestore\Auction\Block\Product\View\Description" name="product.info.equipment" template="Magestore_Auction::product/view/attribute.phtml" group="detailed_info">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getGc_equipment</argument>
+                        <argument name="at_code" xsi:type="string">gc_equipment</argument>
+                        <argument name="css_class" xsi:type="string">gc_equipment</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">Equipment</argument>
+                    </arguments>
+                </block>
+
+                <block class="Magestore\Auction\Block\Product\View\Description" name="product.info.damage" template="Magestore_Auction::product/view/attribute.phtml" group="detailed_info">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getGc_damage</argument>
+                        <argument name="at_code" xsi:type="string">gc_damage</argument>
+                        <argument name="css_class" xsi:type="string">gc_damage</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">Damage</argument>
+                    </arguments>
+                </block>
+                <!--<block class="Magento\Catalog\Block\Product\View\Attributes" name="product.attributes" as="additional" template="product/view/attributes.phtml" group="detailed_info">
+                    <arguments>
+                        <argument translate="true" name="title" xsi:type="string">Damage</argument>
+                    </arguments>
+                </block>-->
+
+                <!--<block class="Magento\Review\Block\Product\Review" name="reviews.tab" as="reviews" template="Magento_Review::review.phtml" group="detailed_info">
+                    <block class="Magento\Review\Block\Form" name="product.review.form" as="review_form">
+                        <container name="product.review.form.fields.before" as="form_fields_before" label="Review Form Fields Before"/>
+                    </block>
+                </block>-->
+            </block>
+        </referenceContainer>
+    </body>
+</page>

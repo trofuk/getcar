@@ -1,0 +1,13 @@
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+  <container name="root" label="Root">
+    <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit\Tab\Product" name="auction.edit.tab.products"/>
+    <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit\Tab\Serializer" name="auction_edit_tabs.serilaze" as="auction_edit_tabs.serilaze">
+      <arguments>
+        <argument name="input_names" xsi:type="string">position</argument>
+        <argument name="callback" xsi:type="string">getSelectedAuctionProducts</argument>
+        <argument name="reload_param_name" xsi:type="string">auction</argument>
+        <argument name="input_element_name" xsi:type="string">product_id</argument>
+      </arguments>
+    </block>
+  </container>
+</layout>

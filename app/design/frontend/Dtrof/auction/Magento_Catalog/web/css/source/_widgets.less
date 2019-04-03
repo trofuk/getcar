@@ -1,0 +1,104 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .block-product-link,
+    .block-category-link {
+        &.widget {
+            display: block;
+            margin-bottom: @indent__base;
+        }
+    }
+
+    .block-product-link-inline {
+        &.widget {
+            margin: 0;
+        }
+    }
+
+    .block.widget {
+
+        .pager {
+            padding: 0;
+
+            .toolbar-amount {
+                float: none;
+                .lib-font-size(12);
+            }
+
+            .pages-item-previous {
+                padding-left: 0;
+            }
+
+            .pages-item-next {
+                position: relative;
+            }
+
+            .items {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .block.widget .products-grid .product-item,
+    .page-layout-1column .block.widget .products-grid .product-item,
+    .page-layout-3columns .block.widget .products-grid .product-item {
+
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+.block-products-list{
+    margin-bottom: 100px;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    .block-title{
+        margin-bottom: 45px;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .block.widget .products-grid .product-item {
+
+    }
+
+    .page-layout-1column .block.widget .products-grid .product-item {
+        margin: 0;
+        text-align: center;
+    }
+
+    .block.widget .products-grid .product-items {
+        margin: 0;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .sidebar .block.widget .pager {
+        .item:not(.pages-item-next):not(.pages-item-previous) {
+            &:extend(.abs-no-display-desktop all);
+        }
+
+        .pages-item-next {
+            padding: 0;
+
+            .action {
+                margin: 0;
+            }
+        }
+    }
+}

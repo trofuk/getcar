@@ -1,0 +1,61 @@
+<?php
+$_helperAuction = $this->helper('Magestore\Auction\Helper\Auction');
+$items = $this->sliderForHomePage();
+if(count($items) > 0) : ?>
+    <div class="slider-container-wrap">
+        <div class="slider-container">
+            <?php foreach ($items as $item) : ?>
+                <div class="slider-items">
+                    <?//=$item['name']?>
+                    <?//=$item['start_time']?>
+                    <?//=$item['end_time']?>
+                    <div class="slider-img-block" style="background-image: url(<?=$item['image']?>)"></div>
+                    <div class="slider-content justify">
+                        <div class="slider-content-info col middle">
+                            <a href="<?=$item['url']?>" class="product-name">
+                                <?=$item['name']?>
+                            </a>
+                            <div class="product-id">
+                                ID <?=$item['product_id']?>
+                            </div>
+                        </div>
+                        <div class="slider-content-price col middle">
+                            <p class="current-price">
+                                <span class="price-value"><?=$_helperAuction->getFormatCurrency($item['price'])?></span>
+                            </p>
+
+                            <p class="price-description"><?php echo __('Текущая цена'); ?></p>
+                        </div>
+                        <div class="slider-timer-button col middle">
+                            <div class="slider_countdown slider_countdown_<?=$item['product_id']?> <?=$item['countdown']['class']?>"
+                                 product-id="<?=$item['product_id']?>"
+                                 data-seconds-left="<?=$item['countdown']['time']?>">
+                            </div>
+                            <a href="<?=$item['url']?>" class="product-link">
+                                <?php echo __('аукцион'); ?>
+                            </a>
+                        </div>
+                    </div>
+                    <script>
+                        require(['jquery','magestore/countdown'], function($){
+                            $('.slider_countdown_<?=$item['product_id']?>').startTimer({timeText:'<?php echo("<span class=\"timer-title\">".$item['countdown']['type']."</span>")?> <?php echo __('<span class="height-timebox"><span id="daytime">%d&nbsp;</span><span id="hourtime">%h</span><span id="tspace">:</span><span id="mtime">%m</span><span id="tspace">:</span><span id="sctime">%s</span></span>') ?>'});
+                        });
+                    </script>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <script>
+            require(['jquery','slick'], function($){
+                $('.slider-container').slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: false,
+                    autoplay: false,
+                    nextArrow: '<span class="slick-next slick-arrows"></span>',
+                    prevArrow: '<span class="slick-prev slick-arrows"></span>'
+                });
+            })
+        </script>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,141 @@
+.auction_timer-wrap{
+    margin-top: 20px;
+    border-top: 1px solid #dbdbdb;
+}
+.auction_timer {
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.height-timebox{
+    display: block;
+    width: 100%;
+}
+
+.title-timebox{float:left; line-height:100px;}
+.timer-bg{background-color: #ebebeb;}
+
+#daytime{
+    color: #ef4136;
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 42px;
+    line-height: 100%;
+    font-family: Roboto-b;
+    position: relative;
+    }
+
+#hourtime{
+    color: #ef4136;
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 42px;
+    line-height: 100%;
+    font-family: Roboto-b;
+    position: relative;
+}
+
+#mtime{
+    color: #ef4136;
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 42px;
+    line-height: 100%;
+    font-family: Roboto-b;
+    position: relative;
+    }
+#sctime{
+    color: #ef4136;
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 28px;
+    line-height: 34px;
+    font-family: Roboto-r;
+    position: relative;
+}
+
+#tspace{
+    font-size: 28px;
+    line-height: 42px;
+    display: inline-block;
+    color: #ef4136;
+    vertical-align: middle;
+    padding: 0 4px;
+    }
+    
+/*.auction_timer{margin: 13px;}*/
+
+.product-info-main .product-info-price{border-bottom: none;}
+
+.ul-timebox {height: 150px; background-color: #ebebeb;}
+
+.close-time{font-weight: 600;}
+.cur-bid {color:#2875d5; font-weight: bold;}
+.incre-bid{font-weight: bold;}
+.start-price{font-weight: bold;}
+
+#line-day{
+    width:100%; 
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #1f1f1f;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    }
+
+#line-hour{
+    width:100%; 
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #1f1f1f;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    }
+#line-mn{
+    width:100%; 
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #1f1f1f;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    }
+#line-sc{
+    width:100%; 
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #1f1f1f;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    }
+
+.auction-block-col input[type=radio]{
+    background: #0DFF92
+}
+
+
+
+/*responsive for aution screen size width 1280px*/
+@media only screen and (max-width: 1200px) {
+
+
+}
+
+/*responsive for aution screen size width 980px*/
+@media only screen and (max-width: 992px) {
+
+}
+
+/*responsive for aution screen size width 800px*/
+@media only screen and (max-width: 768px) {
+
+}
+
+/*responsive for aution screen size width 320px*/
+@media only screen and (max-width: 320px) {
+
+}

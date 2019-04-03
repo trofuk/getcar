@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magestore\Auction\Block\Auction $this */
+?>
+<div class="block block-customer-login">
+    <div class="block-title">
+        <strong id="block-customer-login-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */ echo __('Create Bidder Name') ?></strong>
+    </div>
+    <div class="block-content" aria-labelledby="block-customer-login-heading">
+        <form class="form form-login"
+              action="<?php /* @escapeNotVerified */ echo $this->getPostBidderNameActionUrl() ?>"
+              method="post"
+              id="create-bidname-form" >
+            <fieldset class="fieldset login" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                <div class="field email required">
+                    <label class="label" for="bidder_name"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+                    <div class="control">
+                        <input name="bidder_name" id="bidder_name" value="<?php echo $this->getCurrentCustomerName() ?>" type="text" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Create Bidder Name') ?>" >
+                    </div>
+                    <input type="hidden" value="<?php echo $this->getRequest()->getParam('product_id') ?>" name="product_id">
+                </div>
+
+                <div class="actions-toolbar">
+                    <div class="primary"><button type="submit" class="action create_bid primary" name="send" id="send2"><span><?php /* @escapeNotVerified */ echo __('Create') ?></span></button></div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Auction
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Auction auction</title>
+        <head>
+            <css src="Magestore_Auction::css/mybids.css"/>
+        </head>
+    </head>
+    <body>
+        <referenceBlock name="menu">
+            <action method="setActive">
+                <argument name="itemId" xsi:type="string">Magestore_Auction::auction_packages</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="page.main.actions">
+            <block class="Magento\Backend\Block\Store\Switcher" name="store_switcher">
+                <action method="setUseConfirm">
+                    <argument name="params" xsi:type="string">1</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magestore\Auction\Block\Adminhtml\Packages\Edit" name="package_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magestore\Auction\Block\Adminhtml\Packages\Edit\Tabs" name="package_edit_tabs">
+                <block class="Magestore\Auction\Block\Adminhtml\Packages\Edit\Tab\Edit" name="package_edit_tab_package"/>
+                <block class="Magestore\Auction\Block\Adminhtml\Packages\Edit\Tab\Auctions" name="package_edit_tab_auctions"/>
+                <block class="Magestore\Auction\Block\Adminhtml\Packages\Edit\Tab\Customers" name="package_edit_tab_customers"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

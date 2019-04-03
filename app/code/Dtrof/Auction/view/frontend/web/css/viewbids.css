@@ -1,0 +1,47 @@
+.bids-info{background: #ebebeb;}
+.bids-info li {
+    display: inline-block;
+    padding: 15px;
+    margin-top: 4px;
+    margin-right: 60px;
+}
+.bids-info ul {
+    padding-left: 0;
+}
+.bids-info ul li.timer {
+    padding: 12px 10px 15px;
+}
+
+/*pagination mybid*/
+
+.list-bid .pages-items {
+    float: right;
+}
+
+.list-bid .item.current {
+    border: 1px solid #dddddd;
+    background-color: none;
+}
+
+.list-bid .action.next {
+    margin-left: 0px;
+    padding: 1px 4px 1px 3px;
+    background: none;
+    border: none;
+}
+
+.list-bid .action.previous {
+    margin-right: 0px;
+    padding: 1px 4px 1px 3px;
+    background: none;
+    border: none;
+}
+.bids-history .col {
+    float: none;
+}
+.list-bid .pages strong.page {
+    background: none !important;
+}
+/*---------------------------------*/
+
+.list-bid table thead{ border-top: 1px solid #ccc;}

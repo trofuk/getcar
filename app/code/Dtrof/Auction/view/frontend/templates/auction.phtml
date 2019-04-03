@@ -1,0 +1,40 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product view template
+ *
+ * @var $this Magento\Catalog\Block\Product\View
+ * @var $auction Magestore\Auction\Model\Auction
+ */
+$imageUrl = $this->helper('Magento\Catalog\Helper\Image')
+    ->init($block->getProduct(), 'product_page_image_small')
+    ->setImageFile($block->getImageFile())
+    ->getUrl();
+$_helperAuction = $this->helper('Magestore\Auction\Helper\Auction');
+$_helperProductRepository = $this->helper('Magestore\Auction\Helper\ProductRepository');
+?>
+<div class="auction-wrap">
+    <div class="top-info">
+        <div class="product-photo" style="background-image: url(<?=$imageUrl?>);"></div>
+        <div class="product-auction-price">
+            <span>
+                <?php if($_helperAuction->isLoggedIn()) : ?>
+                    <?=$_helperAuction->getCurrentPriceFormatCurrency($this->getProduct()->getId())?>
+                <?php endif; ?>
+            </span>
+        </div>
+        <?=$_helperProductRepository->showElements($this->getProduct()->getId());?>
+    </div>
+    <div id="auction" class="empty" data-mage-init='{"magestore/auction": {
+                                            "url":"<?php echo $this->getUrl('auction/index/createAuctionBox',array('_secure'=>true)) ?>",
+                                            "product_id":"<?php echo $this->getProduct()->getId() ?>",
+                                            "blocked_groups_id":"<?php echo $this->getData('blocked_groups_id') ?>"
+                                        }}'>
+    </div>
+</div>

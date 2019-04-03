@@ -1,0 +1,129 @@
+<?php
+
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+use Magento\Framework\App\Action\Action;
+/**
+ * Product view template
+ *
+ * @var $block \Magestore\Auction\Block\FeaturedList
+ * @var $_product \Magento\Catalog\Model\Product
+ */
+?>
+<?php
+$enableModule = $block->getSectionStatus();
+if ($enableModule) {
+
+    $block_title = $block->getPageTitle();
+
+    $_productCollection = $block->getLoadedProductCollection();
+    $_helper = $this->helper('Magento\Catalog\Helper\Output');
+    $imageBlock = $block->getLayout()->createBlock('Magento\Catalog\Block\Product\Image');
+    ?>
+    <?php if (!$_productCollection->count()): ?>
+<!--        <div class="message info empty"><div>--><?php //echo __('We can\'t find products matching the selection.') ?><!--</div></div>-->
+    <?php else: ?>
+        <?php
+        $auctions = $block->getFeatureAuction();
+        if ($block->getMode() == 'grid') {
+            $viewMode = 'grid';
+            $image = 'category_page_grid';
+            $showDescription = false;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+        } else {
+            $viewMode = 'list';
+            $image = 'category_page_list';
+            $showDescription = true;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+        }
+        $pos = $block->getPositioned();
+        $position = '';
+        if ($pos != null) {
+            $position = ' style="left:' . $block->getVar("{$image}:width") . 'px;'
+                    . 'top:' . $block->getVar("{$image}:height") . 'px;"';
+        }
+        ?>
+        <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Auction::css/features/features.css')?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Auction::css/features/owl.carousel.css')?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Auction::css/features/owl.theme.css')?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Auction::css/features/owl.transitions.css')?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magestore_Auction::css/countdown/timeTo.css')?>">
+        <div style="float: left;width:100%;" class="pad-main-bottom wrapper <?php echo $viewMode; ?> products-<?php echo $viewMode; ?>">
+            <div style="margin:0 -10px;">
+                <div class="block-title-main">
+                    <h2><?php echo $block_title ?></h2>
+                    <div class="title-border"></div>
+                </div>
+                <?php $iterator = 1; ?>
+                <ol class="products list items product-items featuredproduct">
+                    <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+                    <?php foreach ($_productCollection as $_product): ?>
+                        <?php echo($iterator++ == 1) ? '<li style="margin-top:20px;" class="item product product-item">' : '</li><li style="margin-top:20px;" class="item product product-item">' ?>
+                        <div class="product-item-info" data-container="product-grid">
+                            <?php // Product Image    ?>
+                            <a href="<?php echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                                <span style="width:240px;" class="product-image-container">
+                                    <span style="padding-bottom: 137%;" class="product-image-wrapper">
+                                        <?php
+                                        $imageUrl = $this->helper('Magento\Catalog\Helper\Image')
+                                                ->init($_product, 'product_page_image_large')
+                                                ->constrainOnly(FALSE)
+                                                ->keepAspectRatio(TRUE)
+                                                ->keepFrame(FALSE)
+                                                ->resize(270, 371)
+                                                ->getUrl();
+                                        ?>
+                                        <img class="product-image-photo" src="<?php echo $imageUrl; ?>" />
+                                    </span>
+                                </span>
+                            </a>
+
+                            <div class="product details product-item-details">
+                                <div style="padding: 0 2px;"><?php echo $block->getProductDetailsHtml($_product); ?></div>
+                                <?php
+                                $_productNameStripped = $block->stripTags($_product->getName(), null, true);
+                                ?>
+                                <strong class="product name product-item-name">
+                                    <a class="product-item-link"
+                                       href="<?php echo $_product->getProductUrl() ?>">
+                                           <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+                                    </a>
+                                </strong>
+                                <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
+                                <?php //echo $block->getProductPrice($_product) ?>
+                                <div class="current_bid" id="current_bid_id_<?php echo $_product->getId() ?>"><?php echo __('Current Bid: %1', $auctions[$_product->getId()]['price']) ?></div>
+                                <div class="auction_timer" id="countdown_<?php echo $_product->getId() ?>" product-id="<?php echo $_product->getId() ?>" data-seconds-left="<?php echo $auctions[$_product->getId()]['end_time'] ?>"></div>
+                                <div class="bid_button"><button type="button" title="<?php echo __('Bid') ?>" class="action  primary" onClick="window.location.href='<?php echo $_product->getProductUrl() ?>'"><span><?php echo __('Bid') ?></span> </button></div>
+                            </div>
+                        </div>
+                        <?php echo($iterator == count($_productCollection) + 1) ? '</li>' : '' ?>
+                    <?php endforeach; ?>
+                </ol>
+            </div>
+        </div>
+    <?php endif; ?>
+    <script>
+        require(['jquery', 'magestore/features','magestore/countdown'], function () {
+            jQuery(document).ready(function () {
+                jQuery(".featuredproduct").owlCarousel({
+                    items: 5,
+                    itemsDesktop: [1080, 4],
+                    itemsDesktopSmall: [860, 3],
+                    itemsTablet: [768, 3],
+                    itemsTabletSmall: [639, 2],
+                    itemsMobile: [360, 2],
+                    pagination: false,
+                    navigationText: ["<div class='lft-btn'>&lt;</div>", "<div class='rgt-btn'>&gt;</div>"],
+                    navigation: true,
+                });
+            });
+            jQuery(document).ready(function (jQuery) {
+                jQuery('.auction_timer').startTimer({timeText:'<?php echo __('<span><b>%d</b>&nbsp;Days&nbsp;<b>%h:%m:%s</b></span>') ?>'});
+            });
+        });
+    </script>
+    <?php
+}
+?>

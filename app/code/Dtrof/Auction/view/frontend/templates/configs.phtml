@@ -1,0 +1,69 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magestore\Auction\Block\Configs $this
+ * @var \Magestore\Auction\Model\Bidder $bidder
+ */
+
+$helper = $this->helper('Magestore\Auction\Helper\AuctionConfig');
+$bidder = $this->getCurrentBidder();
+
+$autobid = $helper->isEnableAutobid();
+?>
+<div class="block block-customer-login">
+    <div class="block-content" aria-labelledby="block-customer-login-heading">
+        <form class="form form-login"
+              action="<?php /* @escapeNotVerified */ echo $this->getPostConfigsUrl() ?>"
+              method="post"
+              id="create-bidname-form" >
+            <fieldset class="fieldset login" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                <div class="field email required">
+                    <label class="label" for="bidder_name"><span><?php /* @escapeNotVerified */ echo __('Bidder Name') ?></span></label>
+                    <div class="control">
+                        <input readonly name="bidder_name" id="bidder_name" value="<?php echo $bidder->getBidderName() ?>" type="text" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Create Bidder Name') ?>" >
+                    </div>
+                    <input type="hidden" value="<?php echo $this->getRequest()->getParam('product_id') ?>" name="product_id">
+                </div>
+                <div class="field">
+                    <label class="label"><span><?php /* @escapeNotVerified */ echo __('Email me when:') ?></span></label>
+                </div>
+                <div class="field choice">
+                    <input type="checkbox" name="place_bid" id="place_bid" value="1" title="<?php /* @escapeNotVerified */ echo __('I place a bid') ?>"<?php if ($bidder->getData('place_bid')||!$bidder->getId()): ?> checked="checked"<?php endif; ?> class="checkbox"/>
+                    <label class="label" for="place_bid"><span><?php /* @escapeNotVerified */ echo __('I place a bid') ?></span></label>
+                </div>
+                <?php if($autobid==='1'): ?>
+                <div class="field choice">
+                    <input type="checkbox" name="place_autobid" id="place_autobid" value="1" title="<?php /* @escapeNotVerified */ echo __('I place an autobid') ?>"<?php if ($bidder->getData('place_autobid')||!$bidder->getId()): ?> checked="checked"<?php endif; ?> class="checkbox"/>
+                    <label class="label" for="place_autobid"><span><?php /* @escapeNotVerified */ echo __('I place an autobid') ?></span></label>
+                </div>
+                <?php endif ?>
+                <div class="field choice">
+                    <input type="checkbox" name="over_bid" id="over_bid" value="1" title="<?php /* @escapeNotVerified */ echo __('Another bidder place a bid that is higher than my bid.') ?>"<?php if ($bidder->getData('over_bid')||!$bidder->getId()): ?> checked="checked"<?php endif; ?> class="checkbox"/>
+                    <label class="label" for="over_bid"><span><?php /* @escapeNotVerified */ echo __('Another bidder place a bid that is higher than my bid.') ?></span></label>
+                </div>
+                <?php if($autobid==='1'): ?>
+                <div class="field choice">
+                    <input type="checkbox" name="over_autobid" id="over_autobid" value="1" title="<?php /* @escapeNotVerified */ echo __('Another bidder place a bid that is higher than my auto bid.') ?>"<?php if ($bidder->getData('over_autobid')||!$bidder->getId()): ?> checked="checked"<?php endif; ?> class="checkbox"/>
+                    <label class="label" for="over_autobid"><span><?php /* @escapeNotVerified */ echo __('Another bidder place a bid that is higher than my auto bid.') ?></span></label>
+                </div>
+                <div class="field choice">
+                    <input type="checkbox" name="cancel_bid" id="cancel_bid" value="1" title="<?php /* @escapeNotVerified */ echo __('I cancel a bid.') ?>"<?php if ($bidder->getData('cancel_bid')||!$bidder->getId()): ?> checked="checked"<?php endif; ?> class="checkbox"/>
+                    <label class="label" for="cancel_bid"><span><?php /* @escapeNotVerified */ echo __('I cancel a bid.') ?></span></label>
+                </div>
+                <?php endif ?>
+                <div class="field choice">
+                    <input type="checkbox" name="highest_bid" id="highest_bid" value="1" title="<?php /* @escapeNotVerified */ echo __('I place the highest bid.') ?>"<?php if ($bidder->getData('highest_bid')||!$bidder->getId()): ?> checked="checked"<?php endif; ?> class="checkbox"/>
+                    <label class="label" for="highest_bid"><span><?php /* @escapeNotVerified */ echo __('I place the highest bid.') ?></span></label>
+                </div>
+                <div class="actions-toolbar">
+                    <div class="primary"><button type="submit" class="action create_bid primary" id="send2"><span><?php /* @escapeNotVerified */ echo __('Save') ?></span></button></div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

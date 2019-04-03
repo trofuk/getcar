@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Pdfinvoiceplus
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="catalog_category_view"/>
+    <head>
+        <css src="Magestore_Auction::css/countdown/timeTo.css"/>
+        <css src="Magestore_Auction::css/auctionGrid.css"/>
+        <css src="Magestore_Auction::css/countdown/timeboxlist.css"/>
+    </head>
+    <body>
+        <attribute name="class" value="page-with-filter"/>
+        <attribute name="class" value="catalog-category-view"/>
+        <attribute name="class" value="page-products"/>
+        <referenceContainer name="sidebar.main">
+            <block class="Magento\LayeredNavigation\Block\Navigation\Category" name="catalog.leftnav" before="-" template="Magento_LayeredNavigation::layer/view.phtml">
+                <block class="Magento\LayeredNavigation\Block\Navigation\State" name="catalog.navigation.state" as="state" />
+                <block class="Magento\LayeredNavigation\Block\Navigation\FilterRenderer" name="catalog.navigation.renderer" as="renderer" template="Magento_LayeredNavigation::layer/filter.phtml"/>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="content">
+            <block class="Magestore\Auction\Block\Auction" name="auction.block" as="auction.block" cacheable="false" template="Magestore_Auction::auctiongrid.phtml">
+                <arguments>
+                    <argument name="blocked_groups_id" xsi:type="string">0</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

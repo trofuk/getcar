@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Pdfinvoiceplus
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="My Auction (All Pages)" design_abstraction="custom">
+    <body>
+        <attribute name="class" value="account"/>
+        <referenceBlock name="sidebar.main">
+            <block class="Magento\Framework\View\Element\Template" name="customer_account_navigation" before="-" template="Magestore_Auction::html/collapsible.phtml">
+                <block class="Magento\Framework\View\Element\Html\Links" name="auction_customer_account_navigation" before="-" template="Magento_Customer::account/navigation.phtml">
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-account-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Account Dashboard</argument>
+                            <argument name="path" xsi:type="string">customer/account</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-account-edit-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Account Information</argument>
+                            <argument name="path" xsi:type="string">customer/account/edit</argument>
+                        </arguments>
+                    </block>
+                    <!--<block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-address-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Address Book</argument>
+                            <argument name="path" xsi:type="string">customer/address</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-orders-link">
+                        <arguments>
+                            <argument name="path" xsi:type="string">sales/order/history</argument>
+                            <argument name="label" xsi:type="string" translate="true">My Orders</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-downloadable-products-link">
+                        <arguments>
+                            <argument name="path" xsi:type="string">downloadable/customer/products</argument>
+                            <argument name="label" xsi:type="string">My Downloadable Products</argument>
+                        </arguments>
+                    </block>-->
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-newsletter-subscriptions-link">
+                        <arguments>
+                            <argument name="path" xsi:type="string">newsletter/manage</argument>
+                            <argument name="label" xsi:type="string" translate="true">Newsletter Subscriptions</argument>
+                        </arguments>
+                    </block>
+                    <!--<block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-my-credit-cards-link">
+                        <arguments>
+                            <argument name="path" xsi:type="string">vault/cards/listaction</argument>
+                            <argument name="label" xsi:type="string" translate="true">My Credit Cards</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-billing-agreements-link">
+                        <arguments>
+                            <argument name="path" xsi:type="string">paypal/billing_agreement</argument>
+                            <argument name="label" xsi:type="string" translate="true">Billing Agreements</argument>
+                        </arguments>
+                    </block>-->
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-product-reviews-link">
+                        <arguments>
+                            <argument name="path" xsi:type="string">review/customer</argument>
+                            <argument name="label" xsi:type="string">My Product Reviews</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" ifconfig="wishlist/general/active" name="customer-account-navigation-wish-list-link">
+                        <arguments>
+                            <argument name="path" xsi:type="string">wishlist</argument>
+                            <argument name="label" xsi:type="string">My Wish List</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Template" name="additional-link-1" template="Magento_Theme::html/static_block/auction-submenu.phtml">
+                        <block class="Magento\Framework\View\Element\Html\Links" name="auction_customer_account_navigation_child" as="auctionsubmenu">
+                            <arguments>
+                                <argument name="css_class" xsi:type="string">block-child-menu</argument>
+                                <argument name="label" xsi:type="string" translate="true">My Auction</argument>
+                            </arguments>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="my-bids">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">My Bids</argument>
+                                    <argument name="path" xsi:type="string">auction/index/mybids</argument>
+                                    <argument name="highlight" xsi:type="string">child</argument>
+                                </arguments>
+                            </block>
+                            <!--<block class="Magento\Framework\View\Element\Html\Link\Current" name="my-autobids">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">My Autobids</argument>
+                                    <argument name="path" xsi:type="string">auction/index/myautobid</argument>
+                                    <argument name="highlight" xsi:type="string">child</argument>
+                                </arguments>
+                            </block>-->
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="my-watched">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">My watchlist Auctions</argument>
+                                    <argument name="path" xsi:type="string">auction/index/watchlist</argument>
+                                    <argument name="highlight" xsi:type="string">child</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="email-setting">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">Configs</argument>
+                                    <argument name="path" xsi:type="string">auction/index/configs</argument>
+                                    <argument name="highlight" xsi:type="string">child</argument>
+                                </arguments>
+                            </block>
+                        </block>
+                    </block>
+                </block>
+
+            </block>
+        </referenceBlock>
+    </body>
+</page>

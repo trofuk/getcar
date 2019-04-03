@@ -1,0 +1,57 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/**
+ * Bids view template
+ *
+ * @var $this \Magestore\Auction\Block\Watchlist
+ * @var $_auction \Magestore\Auction\Model\Auction
+ * @var $_bidder \Magestore\Auction\Model\Bidder
+ */
+?>
+<?php $_bidder = $this->getCurrentBidder(); ?>
+<?php if($_bidder->isEnabled()): ?>
+    <?php $_auctions   = $_bidder->getWatchListAuctions(); ?>
+    <?php if ($_auctions->getSize()): ?>
+        <div class="table-wrapper bids-history">
+            <table class="data table table-bid-items history" id="my-bids-table">
+                <caption class="table-caption"><?php  echo __('My Watch List') ?></caption>
+                <thead>
+                <tr>
+                    <th scope="col" class="col auction_name"><?php  echo __('Auction Name') ?></th>
+                    <th scope="col" class="col bids"><?php  echo __('Bids') ?></th>
+                    <th scope="col" class="col start_price"><?php  echo __('Start Price') ?></th>
+                    <th scope="col" class="col current_price"><?php  echo __('Current Price') ?></th>
+                    <th scope="col" class="col start_time"><?php  echo __('Start Time') ?></th>
+                    <th scope="col" class="col end_time"><?php  echo __('End Time') ?></th>
+                    <th scope="col" class="col status"><?php  echo __('Status') ?></th>
+                    <th scope="col" class="col actions"><?php  echo __('Actions') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($_auctions as $_auction): ?>
+                    <tr>
+                        <td data-th="<?php echo $this->escapeHtml(__('Auction Name')) ?>" class="col product_name"><?php  echo $_auction->getName() ?></td>
+                        <td data-th="<?php echo $this->escapeHtml(__('Bids')) ?>" class="col bids"><?php  echo $_auction->getTotalBids() ?></td>
+                        <td data-th="<?php echo $this->escapeHtml(__('Start Price')) ?>" class="col current_price"><?php  echo $_auction->getStartPrice() ?></td>
+                        <td data-th="<?php echo $this->escapeHtml(__('Current Price')) ?>" class="col start_time"><?php  echo $_auction->getCurrentPrice() ?></td>
+                        <td data-th="<?php echo $this->escapeHtml(__('Start Time')) ?>" class="col end_time"><?php  echo $_auction->getLocaleEndTime() ?></td>
+                        <td data-th="<?php echo $this->escapeHtml(__('End Time')) ?>" class="col end_time"><?php  echo $_auction->getLocaleEndTime() ?></td>
+                        <td data-th="<?php echo $this->escapeHtml(__('Status')) ?>" class="col status"><?php echo $_auction->getStatusLabel() ?></td>
+                        <td data-th="<?php echo $this->escapeHtml(__('Action')) ?>" class="col action"><a href="<?php echo $this->getRemovefromwatchlistUrl($_auction->getId()) ?>"><?php echo __('remove') ?></a></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <?php if ($this->getPagerHtml()): ?>
+            <div class="order-products-toolbar toolbar bottom"><?php echo $this->getPagerHtml(); ?></div>
+        <?php endif ?>
+    <?php else: ?>
+        <div class="message info empty"><span><?php  echo __('You have watched no auctions.'); ?></span></div>
+    <?php endif ?>
+<?php endif ?>

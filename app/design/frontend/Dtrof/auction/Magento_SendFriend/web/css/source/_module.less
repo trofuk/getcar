@@ -1,0 +1,37 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+    .action.mailto.friend {
+        &:hover{
+            span{
+                text-decoration: none;
+            }
+        }
+        .lib-icon-font(
+            @_icon-font-content: @icon-envelope,
+            @_icon-font-size: 28px,
+            @_icon-font-line-height: 28px,
+            @_icon-font-vertical-align: top
+        );
+
+        span {
+            display: inline-block;
+            line-height: 16px;
+            vertical-align: middle;
+            .roboto(r,16px);
+            text-decoration: underline;
+        }
+    }
+
+
+//
+//  Desktop
+//  _____________________________________________
+
+

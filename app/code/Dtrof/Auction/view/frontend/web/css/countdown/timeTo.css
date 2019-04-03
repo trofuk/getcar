@@ -1,0 +1,26 @@
+.day {
+    float: left;
+}
+.days, .hours,.minutes,.seconds{
+    font-weight: bold;
+}
+.clearDiv {
+    clear: both;
+}
+
+.bodyTimeoutBackground {
+    background: white;
+}
+.auction-time-box {
+    font-size: 17px;
+}
+.timeout {
+    color: red;
+    -webkit-animation-name: blinker;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+    -webkit-animation-duration: 1s;
+}
+div.auction_timer b {
+    font-size: larger
+}

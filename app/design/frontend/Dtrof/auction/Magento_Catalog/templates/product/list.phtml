@@ -1,0 +1,133 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+use Magento\Framework\App\Action\Action;
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+?>
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_helperAuction = $this->helper('Magestore\Auction\Helper\Auction');
+$_helperProductRepository = $this->helper('Magestore\Auction\Helper\ProductRepository');
+?>
+<?php if (!$_productCollection->count()): ?>
+    <div class="message info empty"><div><?php /* @escapeNotVerified */ echo __('We can\'t find products matching the selection.') ?></div></div>
+<?php else: ?>
+    <?php //echo $block->getToolbarHtml() ?>
+    <?php echo $block->getAdditionalHtml() ?>
+    <?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $image = 'category_page_grid';
+        $showDescription = false;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    } else {
+        $viewMode = 'list';
+        $image = 'category_page_list';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    }
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+    ?>
+    <div class="block block-products-list wrapper <?php /* @escapeNotVerified */ echo $viewMode; ?> products-<?php /* @escapeNotVerified */ echo $viewMode; ?>">
+        <?php $iterator = 1; ?>
+        <ol class="products list items product-items">
+            <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+            <?php foreach ($_productCollection as $_product): ?>
+                <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product product-item">' : '</li><li class="item product product-item">' ?>
+                <div class="product-item-info" data-container="product-grid">
+                    <?php
+                    $productImage = $block->getImage($_product, $image);
+                    if ($pos != null) {
+                        $position = ' style="left:' . $productImage->getWidth() . 'px;'
+                            . 'top:' . $productImage->getHeight() . 'px;"';
+                    }
+                    ?>
+                    <?php // Product Image ?>
+                    <a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" class="product-item-photo" tabindex="-1">
+                        <?php echo $productImage->toHtml(); ?>
+                    </a>
+                    <div class="product-item-details">
+                        <?php
+                        $_productNameStripped = $block->stripTags($_product->getName(), null, true);
+                        ?>
+                        <div class="justify main-info-detail">
+                            <strong class="product-item-name">
+                                <a class="product-item-link"
+                                   href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>">
+                                    <?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+                                </a>
+                            </strong>
+                            <?php $displayValue = $_helperAuction->getCurrentPrice($_product->getId());
+                            if($displayValue == 0) {
+                                echo $block->getProductPrice($_product);
+                            } else {
+                                ?>
+                                <div data-product-id="<?=$_product->getId()?>" data-role="priceBox" class="price-box price-final_price">
+                                    <span class="price-container ">
+                                        <span class="price-wrapper "
+                                              data-price-type="finalPrice"
+                                              data-price-amount="<?=$displayValue?>"
+                                              id="product-price-<?=$_product->getId()?>">
+                                            <span class="price"><?=$_helperAuction->getFormatCurrency($displayValue)?></span>
+                                        </span>
+                                    </span>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <!-- ToDo: must be programmed -->
+                        <div class="justify additional-info-detail">
+                            <div class="additional-details">
+                                <?=$_helperProductRepository->showElements($_product->getId())?>
+                            </div>
+                            <?php $auction = $_helperAuction->getAuctionByProductId($_product->getId()); ?>
+                            <?php if(!empty($auction)) : ?>
+                                <div class="category_slider_countdown_<?=$auction['product_id']?> <?=$auction['countdown']['class']?> slider_countdown_list"
+                                     product-id="<?=$auction['product_id']?>"
+                                     data-seconds-left="<?=$auction['countdown']['time']?>"></div>
+                                <script>
+                                    require(['jquery','magestore/countdown'], function($){
+                                        $('.category_slider_countdown_<?=$auction['product_id']?>').startTimer({timeText:'<?=$auction['countdown']['type']; ?> <?php echo __('<span class="height-timebox"><span id="daytime">%d&nbsp;</span><span id="hourtime">%h</span><span id="tspace">:</span><span id="mtime">%m</span><span id="tspace">:</span><span id="sctime">%s</span></span>') ?>'});
+                                    });
+                                </script>
+                            <?php endif; ?>
+                        </div>
+
+                        <?php /* product reviews*/ //echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
+
+                        <?php echo $block->getProductDetailsHtml($_product); ?>
+
+                        <!--buttons block are removed from here ('.product-item-inner')-->
+                    </div>
+                </div>
+                <?php echo($iterator == count($_productCollection)+1) ? '</li>' : '' ?>
+            <?php endforeach; ?>
+        </ol>
+    </div>
+    <?php echo $block->getToolbarHtml() ?>
+    <?php if (!$block->isRedirectToCartEnabled()) : ?>
+        <script type="text/x-magento-init">
+        {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {}
+            }
+        }
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

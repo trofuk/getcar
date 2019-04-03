@@ -1,0 +1,37 @@
+ul#auction_block li {
+    list-style: none;
+}
+
+li.auction-block-col {
+    display: inline-block;
+    width: 45%;
+}
+
+li.auction-block-row {padding: 2px;margin-bottom: 0px;}
+
+ul#auction_block {
+    padding: 0px;
+}
+
+ul.auction-block-row-ul {
+    padding: 0px;
+}
+
+li.auction-block-col .field {
+    display: inline-block;
+    margin-right: 16px;
+}
+li.auction-block-col.full-width {
+    width: 100%;
+}
+
+.bid_success{
+    color: green;
+}
+.bid_error{
+    color: red;
+}
+li.auction-block-col.timer-box {
+    background-color: silver;
+    padding: 7px;
+}

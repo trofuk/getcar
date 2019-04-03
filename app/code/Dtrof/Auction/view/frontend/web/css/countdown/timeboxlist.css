@@ -1,0 +1,1022 @@
+
+.auction_timer {
+    margin: 13px;
+    height: 55px;
+    float: left;
+    background: #ebebeb;
+    padding: 15px;
+    width: 185px;
+}
+
+.height-timebox{
+    height: 70px;
+    float: left;
+    background: #ebebeb;
+    padding: 15px;
+    width: 100%;
+}
+
+.title-timebox{float:left; line-height:100px;}
+.timer-bg{background-color: #ebebeb;}
+
+#daytime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    margin-right: 17px;
+    position: relative;
+    }
+
+#daytime::after { 
+    content: "days";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 6px;
+    top: 34px;
+}
+
+#hourtime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#hourtime::after { 
+    content: "hours";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 4px;
+    top: 34px;
+}
+
+#mtime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    }
+
+#mtime::after { 
+    content: "minutes";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+    top: 34px;
+}
+
+#sctime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#sctime::after { 
+    content: "seconds";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+    top: 34px;
+}
+
+#tspace{
+    font-size: 25px;
+    font-weight: bold;
+    float: left;
+    width: 16px;
+    height: 34px;
+    text-align: center;
+    color: #b7b7b7;
+    line-height: 30px;
+    }
+    
+/*.auction_timer{margin: 13px;}*/
+
+.product-info-main .product-info-price{border-bottom: none;}
+
+.ul-timebox {height: 150px; background-color: #ebebeb;}
+
+.close-time{font-weight: 600;}
+.cur-bid {color:#2875d5; font-weight: bold;}
+.incre-bid{font-weight: bold;}
+.start-price{font-weight: bold;}
+.place-bid{background: #f96f00; width: 110px; height: 36px; color: #ffffff; border: none;}
+.place-bid:hover{background: blue; width: 110px; height: 36px; color: #ffffff; border: none;}
+
+#line-day{
+    width:100%; 
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #1f1f1f;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    }
+
+#line-hour{
+    width:100%; 
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #1f1f1f;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    }
+#line-mn{
+    width:100%; 
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #1f1f1f;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    }
+#line-sc{
+    width:100%; 
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #1f1f1f;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    }
+
+.auction-block-col input[type=radio]{
+    background: #0DFF92
+}
+
+/*responsive for aution screen size width 1120px*/
+@media only screen and (max-width: 1120px) {
+
+.auction_timer {
+    margin-top: 3px;
+    height: 55px;
+    float: left;
+    background: #ebebeb;
+    padding: 5px;
+    width: 164px;
+}
+
+.height-timebox{
+    height: 70px;
+    float: left;
+    background: #ebebeb;
+    padding: 15px;
+    width: 100%;
+}
+
+.title-timebox{float:left; line-height:100px;}
+.timer-bg{background-color: #ebebeb;}
+
+#daytime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    margin-right: 7px;
+    position: relative;
+    }
+
+#daytime::after { 
+    content: "days";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 6px;
+    top: 34px;
+}
+
+#hourtime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#hourtime::after { 
+    content: "hours";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 4px;
+    top: 34px;
+}
+
+#mtime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    }
+
+#mtime::after { 
+    content: "minutes";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+    top: 34px;
+}
+
+#sctime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#sctime::after { 
+    content: "seconds";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+    top: 34px;
+}
+
+#tspace{
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    width: 10px;
+    height: 34px;
+    text-align: center;
+    color: #b7b7b7;
+    line-height: 30px;
+    }
+
+}
+
+/*end responsive for aution screen size width 1120px*/
+
+/*responsive for aution screen size width 920px*/
+@media only screen and (max-width: 920px) {
+
+.auction_timer {
+    margin-top: 3px;
+    height: 55px;
+    float: left;
+    background: #ebebeb;
+    padding: 5px;
+    width: 164px;
+}
+
+.height-timebox{
+    height: 70px;
+    float: left;
+    background: #ebebeb;
+    padding: 15px;
+    width: 100%;
+}
+
+.title-timebox{float:left; line-height:100px;}
+.timer-bg{background-color: #ebebeb;}
+
+#daytime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    margin-right: 7px;
+    position: relative;
+    }
+
+#daytime::after { 
+    content: "days";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 6px;
+    top: 34px;
+}
+
+#hourtime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#hourtime::after { 
+    content: "hours";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 4px;
+    top: 34px;
+}
+
+#mtime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    }
+
+#mtime::after { 
+    content: "minutes";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+    top: 34px;
+}
+
+#sctime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#sctime::after { 
+    content: "seconds";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+    top: 34px;
+}
+
+#tspace{
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    width: 10px;
+    height: 34px;
+    text-align: center;
+    color: #b7b7b7;
+    line-height: 30px;
+    }
+
+}
+
+/*end responsive for aution screen size width 920px*/
+
+/*responsive for aution screen size width 800px*/
+@media only screen and (max-width: 800px) {
+
+.auction_timer {
+    margin-top: 3px;
+    height: 55px;
+    float: left;
+    background: #ebebeb;
+    padding: 5px;
+    width: 164px;
+}
+
+.height-timebox{
+    height: 70px;
+    float: left;
+    background: #ebebeb;
+    padding: 15px;
+    width: 100%;
+}
+
+.title-timebox{float:left; line-height:100px;}
+.timer-bg{background-color: #ebebeb;}
+
+#daytime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    margin-right: 7px;
+    position: relative;
+    }
+
+#daytime::after { 
+    content: "days";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 6px;
+    top: 34px;
+}
+
+#hourtime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#hourtime::after { 
+    content: "hours";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 4px;
+    top: 34px;
+}
+
+#mtime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    }
+
+#mtime::after { 
+    content: "minutes";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+    top: 34px;
+}
+
+#sctime{
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#sctime::after { 
+    content: "seconds";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+    top: 34px;
+}
+
+#tspace{
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    width: 10px;
+    height: 34px;
+    text-align: center;
+    color: #b7b7b7;
+    line-height: 30px;
+    }
+
+}
+
+/*end responsive for aution screen size width 800px*/
+
+
+/*responsive for aution screen size width 768px*/
+@media only screen and (max-width: 768px) {
+
+.auction_timer {
+    margin-top: 0px;
+    height: 55px;
+    float: left;
+    background: #ebebeb;
+    padding: 3px;
+    width: 158px;
+}
+
+.height-timebox{
+    height: 70px;
+    float: left;
+    background: #ebebeb;
+    padding: 15px;
+    width: 100%;
+}
+
+.title-timebox{float:left; line-height:100px;}
+.timer-bg{background-color: #ebebeb;}
+
+#daytime{
+    color: #ffffff;
+    width: 32px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 2px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    }
+
+#daytime::after { 
+    content: "days";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 6px;
+    top: 34px;
+}
+
+#hourtime{
+    color: #ffffff;
+    width: 32px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 2px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#hourtime::after { 
+    content: "hours";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 4px;
+    top: 34px;
+}
+
+#mtime{
+    color: #ffffff;
+    width: 32px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 2px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    }
+
+#mtime::after { 
+    content: "minutes";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+    top: 34px;
+}
+
+#sctime{
+    color: #ffffff;
+    width: 32px;
+    height: 34px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 2px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#sctime::after { 
+    content: "seconds";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+    top: 34px;
+}
+
+#tspace{
+    font-size: 15px;
+    font-weight: bold;
+    float: left;
+    width: 8px;
+    height: 34px;
+    text-align: center;
+    color: #b7b7b7;
+    line-height: 30px;
+    }
+
+}
+/*end responsive for aution screen size width 768px*/
+
+
+/*responsive for aution screen size width 360px*/
+@media only screen and (max-width: 360px) {
+
+.auction_timer {
+    margin-top: 0px;
+    height: 55px;
+    float: left;
+    background: #ebebeb;
+    padding: 3px;
+    width: 135px;
+}
+
+.height-timebox{
+    height: 70px;
+    float: left;
+    background: #ebebeb;
+    padding: 15px;
+    width: 100%;
+}
+
+.title-timebox{float:left; line-height:100px;}
+.timer-bg{background-color: #ebebeb;}
+
+#daytime{
+    color: #ffffff;
+    width: 28px;
+    height: 31px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 27px;
+    border-radius: 2px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    }
+
+#daytime::after { 
+    content: "D";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 11px;
+    top: 34px;
+}
+
+#hourtime{
+    color: #ffffff;
+    width: 28px;
+    height: 31px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 27px;
+    border-radius: 2px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#hourtime::after { 
+    content: "H";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 11px;
+    top: 34px;
+}
+
+#mtime{
+    color: #ffffff;
+    width: 28px;
+    height: 31px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 27px;
+    border-radius: 2px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    }
+
+#mtime::after { 
+    content: "M";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 11px;
+    top: 34px;
+}
+
+#sctime{
+    color: #ffffff;
+    width: 28px;
+    height: 31px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 27px;
+    border-radius: 2px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#sctime::after { 
+    content: "S";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 11px;
+    top: 34px;
+}
+
+#tspace{
+    font-size: 15px;
+    font-weight: bold;
+    float: left;
+    width: 8px;
+    height: 34px;
+    text-align: center;
+    color: #b7b7b7;
+    line-height: 30px;
+    }
+
+}
+/*end responsive for aution screen size width 360px*/
+
+
+/*responsive for aution screen size width 320px*/
+@media only screen and (max-width: 320px) {
+
+.auction_timer {
+    margin-top: 0px;
+    height: 48px;
+    float: left;
+    background: #ebebeb;
+    padding: 3px;
+    width: 127px;
+}
+
+.height-timebox{
+    height: 70px;
+    float: left;
+    background: #ebebeb;
+    padding: 15px;
+    width: 100%;
+}
+
+.title-timebox{float:left; line-height:100px;}
+.timer-bg{background-color: #ebebeb;}
+
+#daytime{
+    color: #ffffff;
+    width: 26px;
+    height: 27px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    }
+
+#daytime::after { 
+    content: "D";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 11px;
+    top: 34px;
+}
+
+#hourtime{
+    color: #ffffff;
+    width: 26px;
+    height: 27px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#hourtime::after { 
+    content: "H";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 11px;
+    top: 34px;
+}
+
+#mtime{
+    color: #ffffff;
+    width: 26px;
+    height: 27px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    }
+
+#mtime::after { 
+    content: "M";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 11px;
+    top: 34px;
+}
+
+#sctime{
+    color: #ffffff;
+    width: 26px;
+    height: 27px;
+    background-color: #000000;
+    float: left;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+
+#sctime::after { 
+    content: "S";
+    color: #898989;
+    font-size: 10px;
+    position: absolute;
+    text-align: left;
+    left: 11px;
+    top: 34px;
+}
+
+#tspace{
+    font-size: 15px;
+    font-weight: bold;
+    float: left;
+    width: 8px;
+    height: 34px;
+    text-align: center;
+    color: #b7b7b7;
+    line-height: 30px;
+    }
+
+.products-grid .product-item{
+    width: 65% !important;
+}
+
+}
+/*end responsive for aution screen size width 320px*/

@@ -1,0 +1,15 @@
+<?php if($this->package['info']['name'] != '') : ?>
+<div class="sidebar sidebar-package-info">
+    <div class="block block-compare">
+        <div class="block-title">
+            <strong id="block-compare-heading"><?=__('Package')?> "<?=$this->package['info']['name']?>"</strong>
+        </div>
+        <div class="empty"><strong><?=__('Blocked Money')?>:</strong>
+            <?=($this->package['blocked_balance'] == '') ? 0 : $this->package['blocked_balance']?>
+        </div>
+        <div class="empty"><strong><?=__('Free Money')?>:</strong>
+            <?=$this->package['free_balance']?>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

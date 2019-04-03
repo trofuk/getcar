@@ -1,0 +1,42 @@
+div.current_bid {
+    text-align: center;
+    font-size: 15px;
+    color: #848484;
+    font-weight: 600;
+}
+.auction-time-box {
+    text-align: center;
+}
+.bid_button {
+    text-align: center;
+}
+
+.bid_button button {
+    background: #d6d6d6 !important;
+    border: none !important;
+    color: #848484 !important;
+    width: 78px;
+    height: 36px;
+}
+
+div.auction_timer {
+    text-align: center;
+    padding-bottom: .5em;
+}
+
+/*-------------------------*/
+.product-item-details {
+    text-align: center;
+}
+
+.product-item-actions {
+    display: none;
+}
+.products-grid .product-item-info:hover .product-item-inner{
+    display:none;
+}
+div[class^="swatch-opt-"] {
+    display:none;
+}
+
+/*-------------------------*/

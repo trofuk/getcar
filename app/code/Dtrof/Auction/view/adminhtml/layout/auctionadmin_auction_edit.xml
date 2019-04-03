@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Auction
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Auction auction</title>
+        <head>
+            <css src="Magestore_Auction::css/mybids.css"/>
+        </head>
+    </head>
+    <body>
+        <referenceBlock name="menu">
+            <action method="setActive">
+                <argument name="itemId" xsi:type="string">Magestore_Auction::auction</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="page.main.actions">
+            <block class="Magento\Backend\Block\Store\Switcher" name="store_switcher">
+                <action method="setUseConfirm">
+                    <argument name="params" xsi:type="string">1</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit" name="auction_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit\Tabs" name="auction_edit_tabs">
+                <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit\Tab\Mainform" name="auction_edit_tab_auction"/>
+                <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit\Tab\Product" name="auction_edit_tab_product" as="auction_edit_tab_product"/>
+                <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit\Tab\Watchlist" name="auction_edit_tab_watchlist" as="auction_edit_tab_watchlist"/>
+                <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit\Tab\Bid" name="auction_edit_tab_bid" as="auction_edit_tab_bid"/>
+                <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit\Tab\Autobid" name="auction_edit_tab_autobid" as="auction_edit_tab_autobid"/>
+                <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit\Tab\Winners" name="auction_edit_tab_winners" as="auction_edit_tab_winners"/>
+                <block class="Magestore\Auction\Block\Adminhtml\Auction\Edit\Tab\Serializer" name="auction_edit_tabs.serilaze" as="auction_edit_tabs.serilaze">
+                    <arguments>
+                        <argument name="input_names" xsi:type="string">position</argument>
+                        <argument name="callback" xsi:type="string">getSelectedAuctionProducts</argument>
+                        <argument name="reload_param_name" xsi:type="string">auction</argument>
+                        <argument name="input_element_name" xsi:type="string">product_ids</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

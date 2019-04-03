@@ -1,0 +1,81 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/**
+ * Bids view template
+ *
+ * @var $this \Magestore\Auction\Block\Bid
+ * @var $_bid \Magestore\Auction\Model\Bid
+ * @var $_auction \Magestore\Auction\Model\Auction
+ */
+?>
+<?php $_auction = $this->getCurrentAuction(); ?>
+<?php $_bids = $this->getBids(); ?>
+<div class="bids-info">
+    <ul>
+        <li>
+            <?php echo __('Number of Bidder: <b>%1</b>',$_auction->getTotalBider()) ?>
+        </li>
+        <li>
+            <?php echo __('Total Bid: <b>%1</b>', $_auction->getTotalBids()) ?>
+        </li>
+        <li>
+            <?php echo __('Start Time: <b>%1</b>', $_auction->getLocaleStartTime()) ?>
+        </li>
+        <?php if($_auction->getTimeLeft()>0){ ?>
+        <li class="timer">
+            <div class="auction_timer" data-seconds-left="<?php echo $_auction->getTimeLeft() ?>" ></div>
+                <script>
+                    require(['jquery','magestore/countdown'], function($){
+                        $(document).ready(function ($) {
+                            $('.auction_timer').startTimer({timeText:'<?php echo __('<span>Time left: <b>%d</b>&nbsp;Days&nbsp;<b>%h:%m:%s</b></span>') ?>'});
+                        });
+                    });
+                </script>
+        </li>
+        <?php }else{ ?>
+            <li>
+                <?php echo __('End Time: %1', $_auction->getLocaleEndTime()) ?>
+            </li>
+        <?php } ?>
+    </ul>
+</div>
+
+<div class="list-bid">
+<?php if ($_auction->getTotalBids()): ?>
+    <div class="table-wrapper bids-history">
+        <table class="data table table-bid-items history" id="my-bids-table">
+            <caption class="table-caption"><?php  echo __('Bid History') ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col bidder_name"><?php  echo __('BIDDER NAME') ?></th>
+                <th scope="col" class="col bid_amount"><?php  echo __('BID AMOUNT') ?></th>
+                <th scope="col" class="col bid_time"><?php  echo __('BID TIME') ?></th>
+                <th scope="col" class="col type"><?php  echo __('TYPE') ?></th>
+                <th scope="col" class="col status"><?php  echo __('STATUS') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($_bids as $_bid): ?>
+                <tr>
+                    <td data-th="<?php echo $this->escapeHtml(__('Bidder Name')) ?>" class="col bidder_name"><?php  echo $_bid->getBidderName() ?></td>
+                    <td data-th="<?php echo $this->escapeHtml(__('Bid Amount')) ?>" class="col bid_amount"><?php  echo $_bid->getPriceText() ?></td>
+                    <td data-th="<?php echo $this->escapeHtml(__('Bid Time')) ?>" class="col bid_time"><?php echo $_bid->getFormatedTime() ?></td>
+                    <td data-th="<?php echo $this->escapeHtml(__('Type')) ?>" class="col type"><?php  echo $_bid->getTypeLabel() ?></td>
+                    <td data-th="<?php echo $this->escapeHtml(__('Status')) ?>" class="col status"><?php  echo $_bid->getStatusLabel() ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($this->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $this->getPagerHtml(); ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php  echo __('You have placed no bids.'); ?></span></div>
+<?php endif ?>
+</div>

@@ -1,0 +1,285 @@
+/** Colors
+* @c-auction-grey: #dbdbdb;
+* @c-auction-red: #ef4136;
+* @c-auction-text: #8c8c8c;
+*/
+.hidden{
+    display: none !important;
+}
+/*---------------if auction CLOSED-------------------------*/
+.list-bid {
+    margin-top: 30px;
+}
+ul#auction_content {
+    border: 1px solid #dbdbdb;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+ul#auction_content .auction-block-col{
+    padding: 10px 0;
+}
+ul#auction_content .auction-block-col:first-child{
+    padding-top: 0;
+}
+ul#auction_content .auction-block-col:last-child{
+    padding-bottom: 0;
+}
+ul#auction_content .auction-block-col:not(:last-child){
+    border-bottom: 1px solid #dbdbdb;
+}
+ul#auction_content span.title{
+    display: inline-block;
+    width: 140px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+ul#auction_content span.title:after{
+    content:':';
+}
+
+
+/*---------------if auction ACTIVE-------------------------*/
+ul#auction_block{
+    border: 1px solid #dbdbdb;
+    border-top: none;
+    width: 340px;
+    padding: 0;
+    margin-bottom: 0;
+}
+ul#auction_block.not-logged{
+    position: relative;
+
+}
+ul#auction_block.not-logged:after{
+    content: '';
+    color: red;
+    background-color: rgba(255,255,255,0.6);
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    cursor: not-allowed;
+
+}
+ul#auction_block:before {
+    content: '';
+    display: block;
+    height: 30px;
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+}
+
+ul#auction_block li {
+    list-style: none;
+}
+li.auction-block-col {
+    display: inline-block;
+    width: 100%;
+}
+.fieldset1:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.message{
+    margin: 10px 0 0 0!important;
+}
+/** -------------- price bit field ------------- START*/
+#auction_block .field.qty:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+#auction_block .field.qty .qty-button,
+#auction_block .field.qty input{
+    font-family: 'Roboto-m';
+    font-size: 42px;
+    line-height: 62px;
+    text-align: center;
+    height: 62px;
+
+}
+#auction_block .field.qty .qty-button,
+#auction_block .field.qty .control{
+    display: inline-block;
+    float: left;
+}
+#auction_block .field.qty .control{
+    width: calc(100% - 100px);
+    position: relative;
+}
+#auction_block .field.qty .control:after{
+    content: "";
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+/*#auction_block .field.qty.disabled-block .control:after{
+    display: block;
+    cursor: not-allowed;
+}*/
+#auction_block .field.qty .qty-button{
+    width: 50px;
+    background-color: #dbdbdb;
+    color: black;
+    cursor: pointer;
+    transition: all .3s;
+}
+#auction_block .field.qty .qty-button.disabled{
+    cursor: not-allowed;
+}
+#auction_block .field.qty .qty-button:not(.disabled):hover{
+    background-color: #ef4136;
+    color: white;
+}
+#auction_block .field.qty input{
+    color: #8c8c8c;
+    letter-spacing: 1px;
+    border-radius: 0;
+}
+
+#auction_block .increment-value{
+    text-align: center;
+    font-family: Roboto-m;
+    font-size: 14px;
+}
+#auction_block .increment-value p{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#auction_block .increment-value span{
+    font-family: Roboto-b;
+}
+#auction_block .pace-bit-wrap{
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+#auction_block .place-bid{
+    background-color: #ef4136;
+    width: 100%;
+    padding: 15px;
+    font-family:  ProximaNova-r;
+    color: white;
+    font-size: 28px;
+    border-radius: 28px;
+    transition: all .3s;
+}
+#auction_block .place-bid:hover{
+    background-color: #dbdbdb;
+    color: black;
+    box-shadow: 0 0 5px 0 #ef4136;
+}
+/** -------------- price bid field ------------- END*/
+
+
+
+/** -------------- standard/auto bid field ------------- START*/
+#auction_block .autobid-wrap{
+    text-align: center;
+}
+#auction_block .field.choice{
+    display: inline-block;
+    text-align: center;
+}
+#auction_block .field.choice:first-child{
+    margin-right: 20px;
+}
+#auction_block .field.choice .checkbox{
+    display: none;
+}
+#auction_block .field.choice .label{
+    display: inline-block;
+    font-family: Roboto-r;
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+}
+#auction_block .field.choice .label:before{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #c1c1c1;
+    box-shadow: 0 0 0 5px #c1c1c1 inset;
+    border: 1px solid rgba(238, 238, 238, 0.79);
+}
+#auction_block .field.choice .checkbox:checked+.label:before{
+    background-color: #ef4136;
+}
+#auction_block .field.choice .label span{
+    display: inline-block;
+    vertical-align: middle;
+}
+/** -------------- standard/auto bid field ------------- END*/
+
+
+#auction_block .bidder-name{
+    padding: 15px;
+    text-align: center;
+}
+#auction_block .bidder-name .auction-block-col{
+    display: inline-block;
+    width: auto;
+}
+#auction_block .bidder-name #bidder_name{
+    color: #6f4400;
+    text-transform: uppercase;
+}
+
+
+#auction_block .auction-lot-info{
+    background-color: #dbdbdb;
+    color: #8c8c8c;
+    padding: 10px;
+    text-align: center;
+}
+#auction_block .auction-lot-info span{
+    color: black;
+    display: inline-block;
+    padding-right: 5px;
+}
+#auction_block .auction-lot-info .item{
+    display: inline-block;
+    white-space: nowrap;
+}
+#auction_block .auction-lot-info .item:first-child{
+    margin-right: 20px;
+}
+
+li.auction-block-row {
+    padding: 0;
+    margin-bottom: 0;
+    display: block;
+    clear: both;
+}
+.auction-block-row.message{
+    margin-bottom: 0;
+}
+
+ul.auction-block-row-ul {
+    padding: 0;
+}
+
+li.auction-block-col.full-width {
+    width: 100%;
+}
+li.auction-block-col.timer-box {
+    background-color: #ebebeb;
+    padding: 10px;
+}
+@media only screen and (max-width: 768px){
+    #auction_block .place-bid{
+        font-size: 22px;
+    }
+}

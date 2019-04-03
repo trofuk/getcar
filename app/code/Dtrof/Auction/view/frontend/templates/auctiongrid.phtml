@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product view template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View
+ * @var $_product \Magento\Catalog\Model\Product
+ */
+?>
+<?php $_productCollection = $this->getLoadedProductCollection(); ?>
+<?php $auctions = $this->getCoreRegistry()->registry('current_auction'); ?>
+<script>
+    require(['jquery','magestore/countdown'], function($){
+        var showPrice = <?php echo $this->getCoreRegistry()->registry('auction_show_normal_price') ?>;
+        <?php foreach ($_productCollection as $_product): ?>
+        <?php if(!isset($auctions[$_product->getId()])) continue; ?>
+        var product = $('div[data-product-id="<?php echo $_product->getId() ?>"]');
+        if(product) {
+            product.before('<div class="current_bid" id="current_bid_id_<?php echo $_product->getId() ?>"><?php echo __('Current Bid: %1', $auctions[$_product->getId()]['price']) ?></div><div class="auction_timer" id="countdown_<?php echo $_product->getId() ?>" product-id="<?php echo $_product->getId() ?>" data-seconds-left="<?php echo $auctions[$_product->getId()]['end_time'] ?>"></div><div class="bid_button"><button type="button" title="<?php echo __('BID') ?>" class="action  primary" onClick="window.location.href=\'<?php echo $_product->getProductUrl() ?>\'"><span><?php echo __('Bid') ?></span> </button></div>');
+            if(!showPrice){
+                product.hide();
+            }
+        }
+            <?php endforeach; ?>
+        $(document).ready(function ($) {
+            $('.auction_timer').startTimer({timeText:'<?php echo __('<span><span id="daytime">%d</span><span id="hourtime">%h</span><span id="tspace">:</span><span id="mtime">%m</span><span id="tspace">:</span><span id="sctime">%s</span></span>') ?>'});
+        });
+    });
+</script>
+<div id="auction_grid" data-mage-init='{"magestore/auctiongrid": {"update_url":"<?php echo $this->getUrl('auction/index/updateAuctions',array('_secure'=>true)) ?>","update_time":"<?php echo $this->getUpdateTime() ?>"}}'></div>

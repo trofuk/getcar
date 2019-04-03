@@ -1,0 +1,65 @@
+<script>
+    require([
+        "jquery",
+        "jquery/ui"
+    ], function($){
+        var $fildset = $('#package_base_fieldset');
+        var $select = $fildset.find("select[name='package_id']");
+        var $entity = $fildset.find('input#package_entity_id');
+        $select.on('change', function(){
+            var package_id = $(this).val();
+            $.ajax({
+                url: location.protocol + '//' + location.host+'/admin/auctionadmin/customer/link/',
+                dataType: 'json',
+                cache: false,
+                data: {
+                    package_id: package_id,
+                    entity_id: $entity.val(),
+                    form_key: window.FORM_KEY
+                },
+                beforeSend : function(){
+                    $('.admin__data-grid-loading-mask').show();
+                    $('#package_base_fieldset').prepend('<div id="messages" class="oyi-message"><div class="messages"><div class="message"><div data-ui-id="messages-message-success">Set Changes...</div></div></div></div>');
+                },
+                success: function(data) {
+                    $('#package_base_fieldset .oyi-message .message').addClass('messages-' + data.class + ' ' + data.class);
+                    $('#package_base_fieldset .oyi-message .message div').attr('data-ui-id','messages-message-'+data.class).text(data.message);
+                    $('.admin__data-grid-loading-mask').hide();
+                }
+            }).done(function() {
+                setTimeout(function(){
+                    $('#package_base_fieldset .oyi-message').hide(500);
+                    $('#package_base_fieldset .oyi-message').remove();
+                }, 3000);
+            });
+        });
+        $('input[name=save_balance]').on('click', function(){
+            $.ajax({
+                url: location.protocol + '//' + location.host+'/admin/auctionadmin/customer/balance/',
+                dataType: 'json',
+                cache: false,
+                data: {
+                    package_id: $select.val(),
+                    entity_id: $entity.val(),
+                    deposit: parseFloat($('input[name=deposit]').val()),
+                    credit: parseFloat($('input[name=credit]').val()),
+                    form_key: window.FORM_KEY
+                },
+                beforeSend : function(){
+                    $('.admin__data-grid-loading-mask').show();
+                    $('#package_account_fieldset').prepend('<div id="messages" class="oyi-message"><div class="messages"><div class="message"><div data-ui-id="messages-message-success">Set Changes...</div></div></div></div>');
+                },
+                success: function(data) {
+                    $('#package_account_fieldset .oyi-message .message').addClass('messages-' + data.class + ' ' + data.class);
+                    $('#package_account_fieldset .oyi-message .message div').attr('data-ui-id','messages-message-'+data.class).text(data.message);
+                    $('.admin__data-grid-loading-mask').hide();
+                }
+            }).done(function() {
+                setTimeout(function(){
+                    $('#package_account_fieldset .oyi-message').hide(500);
+                    $('#package_account_fieldset .oyi-message').remove();
+                }, 3000);
+            });
+        });
+    });
+</script>

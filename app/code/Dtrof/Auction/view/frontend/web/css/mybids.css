@@ -1,0 +1,39 @@
+h2{font-size: 16px;}
+
+/*pagination list bid*/
+.mybid-list .pages-items {
+    float: right;
+}
+
+.mybid-list .item.current {
+    border: 1px solid #dddddd;
+    background: none;
+}
+
+.mybid-list .action.next {
+    margin-left: 0px;
+    padding: 1px 4px 1px 3px;
+    background: none;
+    border: none;
+}
+
+.mybid-list .action.previous {
+    margin-right: 0px;
+    padding: 1px 4px 1px 3px;
+    background: none;
+    border: none;
+}
+
+.mybid-list .pages strong.page {
+    background: none;
+}
+
+.mybid-list table thead{ border-top: 1px solid #ccc;}
+
+#my-bids-table .col {
+    float: none;
+}
+
+.mybid-list .pages .item.current{
+    border: none;
+}

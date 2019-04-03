@@ -1,0 +1,15 @@
+<?php
+$_helperProductRepository = $this->helper('Magestore\Auction\Helper\ProductRepository');
+$li = $_helperProductRepository->showElements($this->getRequest()->getParam('id'),'description-parameters-item', 'li');
+?>
+<?php if($li != '') : ?>
+<div class="product attribute">
+    <?php // ToDo: Must be programed ?>
+    <div class="title"><?php echo __('Описание') ?></div>
+    <div class="description-parameters">
+        <ul class="description-parameters-wrap">
+            <?=$li?>
+        </ul>
+    </div>
+</div>
+<?php endif; ?>

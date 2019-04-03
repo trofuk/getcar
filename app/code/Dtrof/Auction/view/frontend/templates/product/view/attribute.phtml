@@ -1,0 +1,88 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product view template
+ *
+ * @see \Magento\Catalog\Block\Product\View\Description
+ */
+?>
+
+<?php
+$show_tab = true;
+if(!$block->isLoggedIn()) {
+    if($this->getData('at_call') == 'getGc_damage') {
+        $show_tab = false;
+    }
+}
+?>
+<?php //if($this->getData('at_call') == 'getGc_damage') : ?>
+<?php if($show_tab == true) : ?>
+    <?php
+    $_helper = $this->helper('Magento\Catalog\Helper\Output');
+    $_product = $block->getProduct();
+    $_call = $block->getAtCall();
+    $_code = $block->getAtCode();
+    $_className = $block->getCssClass();
+    $_attributeLabel = $block->getAtLabel();
+    $_attributeType = $block->getAtType();
+    $_attributeAddAttribute = $block->getAddAttribute();
+    if ($_attributeLabel && $_attributeLabel == 'default') {
+        $_attributeLabel = $_product->getResource()->getAttribute($_code)->getFrontendLabel();
+    }
+    if ($_attributeType && $_attributeType == 'text') {
+        $_attributeValue = ($_helper->productAttribute($_product, $_product->$_call(), $_code)) ? $_product->getAttributeText($_code) : '';
+    } else {
+        $_attributeValue = $_helper->productAttribute($_product, $_product->$_call(), $_code);
+    }
+    if($_code == 'short_description') {
+//        $_attributeLabel = __($_product->getResource()->getAttribute($_code)->getFrontendLabel());
+        $_attributeLabel = $_product->getResource()->getAttribute($_code)->getFrontendLabel();
+    }
+    ?>
+    <?php if ($_attributeValue): ?>
+        <div class="product-attribute <?php /* @escapeNotVerified */ echo $_className?>">
+            <?php if ($_attributeLabel != 'none'): ?>
+                <strong class="type">
+                <?php /* @escapeNotVerified */ echo $_attributeLabel?>
+                </strong>
+            <?php endif; ?>
+
+            <div class="value" <?php /* @escapeNotVerified */ echo $_attributeAddAttribute;?>>
+                <?php echo $_attributeValue; ?>
+            </div>
+
+            <script>
+                require(['jquery'], function($){
+                    if($('.accordion-group').length){
+                        $('.<?=$_className?> .accordion-group').each(function(){
+                            var toggleButton = $('>.accordion-heading a', $(this)),
+                                toggleBlock = $('>.accordion-body', $(this));
+
+                            toggleButton.on('click', function(e){
+                                e.preventDefault();
+                                toggleBlock.slideToggle();
+                                $(this).parent().toggleClass('active');
+                            })
+                        });
+                    }
+                })
+            </script>
+
+        </div>
+    <?php endif; ?>
+<?php else : ?>
+    <div class="product info detailed" data-role="<?=$this->getData('blocked_groups_id')?>">
+        <?php if($block->checkUserSession() == 1 && $block->checkUserGroupAccess() == 0): ?>
+            <?php echo __('Your account is not entitled to participate in the auction. Contact your support') ?>
+        <?php else: ?>
+            <?php $product = $block->getProduct(); ?>
+            <?php echo __('Please <a href="%1" class="btn primary">login</a> to view details',$this->getUrl('auction/index/redirectToLogin',['product_id' => $product->getId()])) ?>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

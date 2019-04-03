@@ -1,0 +1,100 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * @var $block \Magento\Reports\Block\Product\Viewed
+ */
+?>
+<?php
+if ($exist = ($block->getRecentlyViewedProducts() && $block->getRecentlyViewedProducts()->getSize())) {
+    $type = 'widget-viewed';
+    $mode = 'grid';
+
+    $type = $type . '-' . $mode;
+
+    $image = 'recently_viewed_products_grid_content_widget';
+    $title = __('Recently Viewed');
+    $items = $block->getRecentlyViewedProducts();
+
+    $showWishlist = true;
+    $showCompare = true;
+    $showCart = true;
+    $rating = 'short';
+    $description = ($mode == 'list') ? true : false;
+}
+
+$_helperAuction = $this->helper('Magestore\Auction\Helper\Auction');
+$_helperProductRepository = $this->helper('Magestore\Auction\Helper\ProductRepository');
+?>
+<?php if ($exist):?>
+    <div class="block recently-viewed widget fadeInUp block-products-list block-viewed-products-<?php /* @escapeNotVerified */ echo $mode; ?>">
+        <div class="block-title">
+            <strong role="heading" aria-level="2"><?php /* @escapeNotVerified */ echo $title; ?></strong>
+        </div>
+        <div class="block-content">
+            <?php /* @escapeNotVerified */ echo '<!-- ' . $image . '-->' ?>
+            <div class="products-<?php /* @escapeNotVerified */ echo $mode; ?> <?php /* @escapeNotVerified */ echo $mode; ?>">
+                <ol class="product-items slick <?php /* @escapeNotVerified */ echo $type; ?>">
+                    <?php $iterator = 1; ?>
+                    <?php foreach ($items as $_item): ?>
+                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="product-item">' : '</li><li class="product-item">' ?>
+                        <div class="product-item-info">
+                            <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>" class="product-item-photo">
+                                <?php echo $block->getImage($_item, $image)->toHtml(); ?>
+                            </a>
+                            <div class="product-item-details">
+                                <div class="justify main-info-detail">
+                                    <strong class="product-item-name">
+                                        <a title="<?php echo $block->escapeHtml($_item->getName()) ?>"
+                                           href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>" class="product-item-link">
+                                            <?php echo $block->escapeHtml($_item->getName()) ?>
+                                        </a>
+                                    </strong>
+                                    <?php /* @escapeNotVerified */ echo $block->getProductPriceHtml(
+                                        $_item,
+                                        \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE,
+                                        \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST,
+                                        [
+                                            'price_id_suffix' => '-' . $type
+                                        ]
+                                    ) ?>
+                                </div>
+                                <?php if ($rating): ?>
+                                    <?php echo $block->getReviewsSummaryHtml($_item, $rating) ?>
+                                <?php endif; ?>
+                                <?php $auction = $_helperAuction->getAuctionByProductId($_item->getId()); ?>
+                                <?php $customProduct = $_helperProductRepository->getAuctionAttribute($_item->getId()); ?>
+                                <div class="justify additional-info-detail">
+                                    <div class="additional-details">
+                                        <?=$_helperProductRepository->showElements($_item->getId())?>
+                                    </div>
+                                    <?php if(!empty($auction)) : ?>
+                                        <div class="<?=$type?>_slider_countdown_<?=$auction['product_id']?> <?=$auction['countdown']['class']?> slider_countdown_list"
+                                             product-id="<?=$auction['product_id']?>"
+                                             data-seconds-left="<?=$auction['countdown']['time']?>"></div>
+                                        <script>
+                                            require(['jquery','magestore/countdown'], function($){
+                                                $('.<?=$type?>_slider_countdown_<?=$auction['product_id']?>').startTimer({timeText:'<?=$auction['countdown']['type']; ?> <?php echo __('<span class="height-timebox"><span id="daytime">%d&nbsp;</span><span id="hourtime">%h</span><span id="tspace">:</span><span id="mtime">%m</span><span id="tspace">:</span><span id="sctime">%s</span></span>') ?>'});
+                                            });
+                                        </script>
+                                    <?php endif; ?>
+                                </div>
+
+                                <!-- Action buttons remove from here -->
+                            </div>
+                        </div>
+                        <?php echo($iterator == count($items)+1) ? '</li>' : '' ?>
+                    <?php endforeach ?>
+                </ol>
+            </div>
+            <?php echo $block->getPagerHtml() ?>
+        </div>
+    </div>
+<?php endif;?>

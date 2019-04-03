@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/** @var $block \Magento\Framework\View\Element\Html\Links */
+?>
+<?php /** @var $block \Magento\Customer\Block\Account\Navigation */ ?>
+<div class="block <?php /* @escapeNotVerified */ echo $block->getBlockCss(); ?>">
+    <?php if($block->getBlockTitle() != '') : ?>
+    <div class="title <?php /* @escapeNotVerified */ echo $block->getBlockCss();?>-title">
+        <strong><?php /* @escapeNotVerified */ echo $block->getBlockTitle(); ?></strong>
+    </div>
+    <?php endif; ?>
+    <div class="content <?php /* @escapeNotVerified */ echo $block->getBlockCss(); ?>-content" id="<?php /* @escapeNotVerified */ echo $block->getBlockCss(); ?>">
+        <div class="block account-nav">
+            <?php if($block->getBlockTitle() != '') : ?>
+            <div class="title">
+                <strong><?php /* @escapeNotVerified */ echo $block->getBlockTitle(); ?></strong>
+            </div>
+            <?php endif; ?>
+            <div class="content">
+                <nav class="account-nav">
+                    <ul class="nav items">
+                        <?php echo $block->getChildHtml();?>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
